@@ -11,7 +11,24 @@ import PropTypes from 'prop-types'
 //     );
 // };
 
+// MyComponent.defaultProps = {
+//     name: 'Jamie'
+// };
+
+// MyComponent.prototype = {
+//     name: PropTypes.string,
+//     favoriteNumber: PropTypes.number.isRequired
+// };
+
 class MyComponent extends Component {
+    static defaultProps = {
+        name: 'jamie'
+    };
+    static propTypes = {
+        name: PropTypes.string,
+        favoriteNumber: PropTypes.number.isRequired
+    };
+
     render() {
         const {name, favoriteNumber, children} = this.props; // 비구조화 할당
         return (
@@ -23,14 +40,5 @@ class MyComponent extends Component {
         );
     }
 }
-
-MyComponent.defaultProps = {
-    name: 'Jamie'
-};
-
-MyComponent.prototype = {
-    name: PropTypes.string,
-    favoriteNumber: PropTypes.number.isRequired
-};
 
 export default MyComponent;
