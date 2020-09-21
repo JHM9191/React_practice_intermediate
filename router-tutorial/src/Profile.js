@@ -1,4 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import WithRouterSample from './WithRouterSample';
+import withRouterSample from './WithRouterSample';
 
 const data = {
     jamie: {
@@ -25,8 +28,9 @@ const Profile = ({ match }) => {
             <p>
                 {profile.description}
             </p>
+            <WithRouterSample />
         </div>
     );
 };
 
-export default Profile;
+export default withRouter(Profile);
