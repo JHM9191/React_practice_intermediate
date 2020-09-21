@@ -11,8 +11,13 @@ const Info = () => {
         //     nickname
         // });
         // console.log('마운트될 때만 실행됩니다.');
+        console.log('effect');
         console.log(name);
-    },[name]);
+        return () => {
+            console.log('cleanup');
+            console.log(name);
+        }
+    },[]);
 
     const onChangeName = e => {
         setName(e.target.value);
