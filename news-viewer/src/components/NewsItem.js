@@ -12,6 +12,17 @@ const NewsItemBlock = styled.div`
             object-fit: cover;
         }
     }
+    .nothumbnail {
+        margin-right: 1rem;
+        div {
+            background: gray;
+            color: white;
+            width: 160px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+    }
     .contents {
         h2 {
             margin: 0;
@@ -33,6 +44,7 @@ const NewsItemBlock = styled.div`
 
 const NewsItem = ({ article }) => {
     const { title, description, url, urlToImage } = article;
+    console.log(article);
     return (
         <NewsItemBlock>
             {urlToImage && (
@@ -40,6 +52,11 @@ const NewsItem = ({ article }) => {
                     <a href={url} target="_blank" rel="noopener noreferrer">
                         <img src={urlToImage} alt="thumbnail" />
                     </a>
+                </div>
+            )}
+            {!urlToImage && (
+                <div className="nothumbnail">
+                    <div>No Image</div>
                 </div>
             )}
             <div className="contents">
