@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Axios from '../../node_modules/axios/index';
+import Axios from 'axios/index';
 import NewsItem from './NewsItem';
 
 const NewsListBlock = styled.div`
@@ -17,7 +17,7 @@ const NewsListBlock = styled.div`
 `;
 
 
-const NewsList = () => {
+const NewsList = ({ category }) => {
     const [articles, setArticles] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -26,7 +26,11 @@ const NewsList = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await Axios.get('https://newsapi.org/v2/top-headlines?country=kr&apiKey=d16d55112de249f9aef6a162ff89d709',);
+                const query = category === 'all' ? '' : `&category=${category}`;
+                console.log(query);
+
+
+                const response = await Axios.get(`https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=d16d55112de249f9aef6a162ff89d709`,);
                 setArticles(response.data.articles);
             } catch (e) {
                 console.log(e);
@@ -34,7 +38,7 @@ const NewsList = () => {
             setLoading(false);
         };
         fetchData();
-    },[]);
+    },[category]);
 
     // 대기 중 일 때
     if (loading) {
