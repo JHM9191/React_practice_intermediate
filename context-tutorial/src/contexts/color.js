@@ -17,7 +17,7 @@ const ColorProvider = ({ children }) => {
         actions: { setColor, setSubcolor }
     };
     return (
-        <ColorContext.Provider value={value}>{children} </ColorContext.Provider>
+        <ColorContext.Provider value={value}>{children}</ColorContext.Provider>
     );
 };
 
